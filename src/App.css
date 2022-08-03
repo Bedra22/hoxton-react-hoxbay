@@ -159,7 +159,7 @@ img {
 .product-detail__side {
   position: relative;
   display: grid;
-  grid-template-rows: 20% auto;
+  grid-template-rows: 15% auto;
   align-content: start;
   padding-left: 1rem;
   border-left: 2px solid;

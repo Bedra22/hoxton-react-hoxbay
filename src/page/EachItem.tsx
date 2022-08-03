@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Navigate, useParams } from "react-router-dom"
 
-type ItemsINStore = {
+type ItemINStore = {
     id: number,
     title: string,
     price: number,
@@ -11,28 +11,31 @@ type ItemsINStore = {
 }
 
 export function EachItem() {
-    const [storeitems, setStoreitems] = useState<null | ItemsINStore>(null)
+    const [storeitem, setStoreitem] = useState<null | ItemINStore>(null)
     const params = useParams()
+    console.log('params:', params)
 
     useEffect(() => {
         fetch(`http://localhost:4000/products/${params.id}`)
             .then(resp => resp.json())
-            .then(productdetailsFromServer => setStoreitems(productdetailsFromServer))
+            .then(productdetailsFromServer => setStoreitem(productdetailsFromServer))
     }, [])
 
-    if (storeitems === null) return (
+    if (storeitem === null) return (
         <div>Loading...</div>
     )
 
-    if (storeitems === undefined) return <Navigate to="/home" />
+    if (storeitem.id === undefined) return <Navigate to="/home" />
 
     return (
-        <div>
-            <img src={storeitems.image} />
-            <h3>{storeitems.title}</h3>
-            <p>{storeitems.description}</p>
-            <p>{storeitems.price}</p>
-            <button>Add to basket</button>
+        <div className="product-detail">
+            <img src={storeitem.image} />
+            <div className="product-detail__side">
+                <h2>{storeitem.title}</h2>
+                <h3>{storeitem.description}</h3>
+                <p>{storeitem.price}</p>
+                <button>Add to basket</button>
+            </div>
         </div>
     )
 }
