@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Navigate, useParams } from "react-router-dom"
+import { Link, Navigate, useParams } from "react-router-dom"
 
 type ItemINStore = {
     id: number,
@@ -33,8 +33,11 @@ export function EachItem() {
             <div className="product-detail__side">
                 <h2>{storeitem.title}</h2>
                 <h3>{storeitem.description}</h3>
-                <p>{storeitem.price}</p>
-                <button>Add to basket</button>
+                <h3>£{storeitem.price}</h3>
+                <link rel="stylesheet" href="" />
+                <Link to={`/basket`} >
+                    <button>Add to basket</button>
+                </Link>
             </div>
         </div>
     )
