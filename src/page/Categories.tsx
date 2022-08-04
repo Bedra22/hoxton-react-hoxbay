@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 type Kategorite = {
     id: number,
     name: string
@@ -17,9 +18,11 @@ export function Categories() {
             <ul className="categories-container__list">
                 {categories.map(kategori => (
                     <li  >
-                        <a>
-                            {kategori.name}
-                        </a>
+                        <Link to={`/categories/${kategori.id}`} >
+                            <a>
+                                {kategori.name}
+                            </a>
+                        </Link>
                     </li>
                 ))}
             </ul>

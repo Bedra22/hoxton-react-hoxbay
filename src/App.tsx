@@ -4,6 +4,7 @@ import { Home } from './page/Home'
 import { Categories } from './page/Categories'
 import { Basket } from './page/Basket'
 import { EachItem } from './page/EachItem'
+import { CategoriesItems } from './page/CategoriesItems'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path='home' element={<Home />} />
           <Route path='home/:id' element={<EachItem />} />
           <Route path='categories' element={<Categories />} />
+          <Route path='categories/:id' element={<CategoriesItems />} />
           <Route path='basket' element={<Basket />} />
         </Routes>
       </main>
