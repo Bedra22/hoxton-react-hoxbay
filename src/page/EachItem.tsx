@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { Link, Navigate, useParams } from "react-router-dom"
-import { basketItem } from "./Basket";
+import { ItemINStore } from "./Basket";
 
 type ItemINStore = {
     id: number,
@@ -13,7 +13,7 @@ type ItemINStore = {
 
 export function EachItem() {
     const [storeitem, setStoreitem] = useState<null | ItemINStore>(null)
-    const [basket, setBasket] = useState<basketItem[]>([]);
+    const [basket, setBasket] = useState<ItemINStore[]>([]);
     const params = useParams()
     console.log('params:', params)
 
@@ -53,7 +53,7 @@ export function EachItem() {
                             })
                         })
                             .then(response => response.json())
-                            .then(basketItem => setBasket([...basket, basketItem]))
+                            .then(ItemINStore => setBasket([...basket, ItemINStore]))
                     }}>Add to basket</button>
                 </Link>
             </div>
