@@ -212,7 +212,7 @@ img {
 .categories-container__list a {
   display: grid;
   height: 300px;
-  background-color: rgba(180, 18, 180, 0.723);
+  background-color: rgb(214, 99, 214);
   place-items: center;
   text-transform: capitalize;
   text-align: center;
@@ -270,4 +270,25 @@ img {
   align-items: center;
   grid-template-columns: auto 3fr 1fr 1fr;
   column-gap: 2rem;
+}
+
+.basket-container__item img {
+  width: 90px;
+}
+
+.btn-size {
+  border: 1px solid grey;
+  border-radius: 5px;
+  height: 15px;
+
+  display: grid;
+  place-content: center;
+  width: 35px;
+}
+
+.quantity {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
 }

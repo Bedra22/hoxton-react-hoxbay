@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { Link, Navigate, useParams } from "react-router-dom"
+import { basketItem } from "./Basket";
 
 type ItemINStore = {
     id: number,
@@ -12,6 +13,7 @@ type ItemINStore = {
 
 export function EachItem() {
     const [storeitem, setStoreitem] = useState<null | ItemINStore>(null)
+    const [basket, setBasket] = useState<basketItem[]>([]);
     const params = useParams()
     console.log('params:', params)
 
@@ -36,7 +38,23 @@ export function EachItem() {
                 <h3>£{storeitem.price}</h3>
                 <link rel="stylesheet" href="" />
                 <Link to={`/basket`} >
-                    <button>Add to basket</button>
+                    <button onClick={() => {
+                        fetch(`http://localhost:4000/basket`, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({
+                                productId: storeitem.id,
+                                quantity: 1,
+                                image: storeitem.image,
+                                title: storeitem.title,
+                                price: storeitem.price.toFixed(2)
+                            })
+                        })
+                            .then(response => response.json())
+                            .then(basketItem => setBasket([...basket, basketItem]))
+                    }}>Add to basket</button>
                 </Link>
             </div>
         </div>
